@@ -1,0 +1,19 @@
+<!-- posts/templates/posts/post_form_modelform.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ModelForm 投稿フォーム</title>
+</head>
+<body>
+    <h1>投稿フォーム（ModelForm）</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}  <!-- ← 超シンプルに！ -->
+        <button type="submit">保存</button>
+    </form>
+
+    <a href="{% url 'post_list' %}">← 一覧に戻る</a>
+</body>
+</html>
