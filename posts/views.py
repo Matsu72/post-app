@@ -33,3 +33,8 @@ def post_edit(request, pk):
         return redirect('post_detail', pk=post.pk)
 
     return render(request, 'posts/post_form.html', {'post': post})
+
+def post_delete(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    post.delete()
+    return redirect('post_list')
