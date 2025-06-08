@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>新規投稿</title>
+    <title>{% if post %}投稿を編集{% else %}新規投稿{% endif %}</title>
 </head>
 <body>
-    <h1>新規投稿</h1>
+    <h1>{% if post %}投稿を編集{% else %}新規投稿{% endif %}</h1>
 
     <form method="POST">
         {% csrf_token %}
+        
         <label>タイトル:</label><br>
-        <input type="text" name="title"><br><br>
+        <input type="text" name="title" value="{% if post %}{{ post.title }}{% endif %}"><br><br>
 
         <label>本文:</label><br>
-        <textarea name="content" rows="4" cols="50"></textarea><br><br>
+        <textarea name="content">{% if post %}{{ post.content }}{% endif %}</textarea><br><br>
 
-        <button type="submit">投稿する</button>
+        <button type="submit">{% if post %}更新{% else %}投稿する{% endif %}</button>
     </form>
 
     <br>

@@ -23,3 +23,13 @@ def post_create(request):
             return redirect('post_list')  # 投稿後は一覧に戻る
     return render(request, 'posts/post_form.html')
 
+def post_edit(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+
+    if request.method == 'POST':
+        post.title = request.POST.get('title')
+        post.content = request.POST.get('content')
+        post.save()
+        return redirect('post_detail', pk=post.pk)
+
+    return render(request, 'posts/post_form.html', {'post': post})
