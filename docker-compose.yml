@@ -1,0 +1,13 @@
+version: '3'
+
+#複数の「サービス（＝コンテナ）」を定義できる
+services:
+  web: #今は web という名前のサービス（Djangoアプリ）を1つ定義しています
+    build: . # Dockerfileがあるディレクトリを指定
+    command: python manage.py runserver 0.0.0.0:8000
+    #ホスト（自分のPC）の現在のディレクトリ . を、Dockerコンテナ内の /code にマウント
+    volumes:
+      - .:/code
+      
+    ports:
+      - "8000:8000"

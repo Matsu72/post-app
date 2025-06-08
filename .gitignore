@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual Environment
+venv/
+
+# DB
+*.sqlite3
+db.sqlite3
+
+# Environment Variables
+.env
+.env.*
+
+# Static / Media files
+/media/
+/static/
+
+# Docker (if used)
+/.docker/
+# Logs
+*.log
+# IDEs
+.idea/
+# Jupyter Notebook
